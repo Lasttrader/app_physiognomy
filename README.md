@@ -2,7 +2,7 @@
 # blood-classifier
 =======
 ## ML-Model-Flask-Deployment
-This is a demo project to elaborate how Machine Learn Models are deployed on production using Flask API
+This is a demo project to elaborate how Machine Learn Models are deployed on production using Flask API. And
 
 ### Prerequisites
 You must have Scikit Learn, Pandas (for Machine Leraning Model) and Flask (for API) installed.
