@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Your photo and results</title>
+
+<style>
+  body, html {
+    overflow-y: auto; /* Убираем вертикальную полосу прокрутки */
+	}
+   .layer {   
+    margin: auto; /* Выравниваем по центру */
+    width: 600px;  /*Ширина блока */
+    height: 200vh;
+	} 
+</style> 
+
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+
+ </head>
+
+<body>
+ <div class="layer">
+
+<h1>This is your photo and result</h>
+	<a href = "{{url_for('index')}}">Back</a><p>
+
+	<ul>
+		{% for file_url in file_urls %}
+			<li><img style="height: 150px" src="{{file_url}}"></li>
+			{{ prediction_text }}
+		{% endfor %}
+	</ul>
+
+
+<!--<form action="/results" method="post">-->
+
+<!--<input type = "submit"> -->
+<!-- <buton type ='submit' class = "btn btn-primary btn-block btn-large">Predict</buton> -->
+
+<!--</form>-->
+
+
+</body>
+</html>

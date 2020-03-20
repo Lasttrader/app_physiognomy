@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Check your psychotype</title>
+  		{{dropzone.load()}}
+		{{dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;')}}
+
+<style>
+  body, html {
+    overflow-y: auto; /* Убираем вертикальную полосу прокрутки */
+	}
+   .layer {   
+    margin: auto; /* Выравниваем по центру */
+    width: 600px;  /*Ширина блока */
+    height: 200vh;
+	} 
+</style> 
+
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+
+ </head>
+
+<body>
+ <div class="layer">
+	<h1>Check your psychotype</h1>
+
+	{{dropzone.create(action_view='index')}}
+ </div>
+
+
+</body>
+</html>
