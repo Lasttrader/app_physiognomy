@@ -43,11 +43,11 @@ configure_uploads(app, photos)
 patch_request_class(app) # max file size, default - 16Mb
 
 #work with model
-json_file = open('model_diplom_json.json', 'r')
+json_file = open('model_json.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
-loaded_model.load_weights('model_diplom_h5.h5')
+loaded_model.load_weights('model_h5.h5')
 print('model is loaded')
 loaded_model.compile(optimizers.rmsprop(lr=0.0001, decay=1e-6),loss="binary_crossentropy",metrics=["accuracy"])
 
