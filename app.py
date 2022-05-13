@@ -135,7 +135,7 @@ def results():
             loaded_model = model_from_json(loaded_model_json)
             loaded_model.load_weights('model_h5.h5')
             print('model is loaded')
-            loaded_model.compile(optimizers.RMSprop(lr=0.0001, decay=1e-6),loss="binary_crossentropy",metrics=["accuracy"])
+            loaded_model.compile(optimizers.RMSprop(lr=0.0001, decay=1e-6),loss="categorical_crossentropy",metrics=["accuracy"])
 
             # model json
             json_file = open('model_json.json', 'r')
@@ -147,7 +147,7 @@ def results():
             print(pred_d[0])
             pred_text =[]
             for i in range(len(classes)):
-                if pred_d[0][i]>0.9:
+                if pred_d[0][i]>0.99:
                     pred_text.append(classes[i])
             print(pred_text)
             #return str(pred_text)
