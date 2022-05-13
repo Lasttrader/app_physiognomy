@@ -12,9 +12,9 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_cl
 #import for model and preprocessing
 import pickle
 from sklearn.preprocessing import StandardScaler
-from keras.preprocessing import image
-from keras.models import model_from_json
-from keras import regularizers, optimizers
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import model_from_json
+from tensorflow.keras import regularizers, optimizers
 import random
 import os
 import numpy as np
@@ -41,21 +41,6 @@ app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/uploads' # path
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app) # max file size, default - 16Mb
-
-#work with model
-json_file = open('model_json.json', 'r')
-loaded_model_json = json_file.read()
-json_file.close()
-loaded_model = model_from_json(loaded_model_json)
-loaded_model.load_weights('model_h5.h5')
-print('model is loaded')
-loaded_model.compile(optimizers.rmsprop(lr=0.0001, decay=1e-6),loss="binary_crossentropy",metrics=["accuracy"])
-
-# model json
-json_file = open('model_diplom_json.json', 'r')
-loaded_model_json = json_file.read()
-json_file.close()
-loaded_model = model_from_json(loaded_model_json)
 
 
 graph = tf.compat.v1.get_default_graph()
@@ -142,7 +127,22 @@ def results():
     
     with session_tf.as_default():
         with graph.as_default():
-            
+            #work with model
+
+            json_file = open('model_json.json', 'r')
+            loaded_model_json = json_file.read()
+            json_file.close()
+            loaded_model = model_from_json(loaded_model_json)
+            loaded_model.load_weights('model_h5.h5')
+            print('model is loaded')
+            loaded_model.compile(optimizers.RMSprop(lr=0.0001, decay=1e-6),loss="binary_crossentropy",metrics=["accuracy"])
+
+            # model json
+            json_file = open('model_json.json', 'r')
+            loaded_model_json = json_file.read()
+            json_file.close()
+            loaded_model = model_from_json(loaded_model_json)
+
             pred_d = loaded_model.predict(x)
             print(pred_d[0])
             pred_text =[]
