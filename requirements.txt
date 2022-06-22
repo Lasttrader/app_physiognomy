@@ -18,7 +18,7 @@ Keras-Preprocessing==1.1.0
 load==2019.4.13
 Markdown==3.2.1
 MarkupSafe==1.1.1
-numpy==1.18.1
+numpy==1.22.0
 opt-einsum==3.2.0
 pickle-mixin==1.0.2
 public==2019.4.13
