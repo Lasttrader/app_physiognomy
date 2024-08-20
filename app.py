@@ -114,10 +114,8 @@ def results():
      
     # pcture
     n_size = 100
-    #print('Enter picture path')
-    #pic_path = str(input())
+
     # open and preprocess
-    
     x = np.expand_dims(image.img_to_array(image.load_img(app.config['UPLOADED_PHOTOS_DEST']+'/'+filename, target_size=(n_size, n_size))), axis=0).reshape(n_size,n_size,3)
     # predict
     x = x.reshape([-1,100,100,3])
@@ -161,16 +159,4 @@ if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=port)
     
     #app.run(debug=True)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
