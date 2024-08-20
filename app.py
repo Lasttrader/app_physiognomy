@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 # import flask
 from flask import Flask, request, redirect, jsonify, render_template, session, url_for
 from flask_dropzone import Dropzone
